@@ -184,12 +184,14 @@
 
       <div class="cta-section">
         <h2>Be the first to revolutionize your research workflow</h2>
-        <input
-          type="email"
-          class="email-input"
-          placeholder="Enter your email for early access"
-        />
-        <button class="notify-button">Notify Me</button>
+        <form
+          id="notifyForm"
+          action="https://formspree.io/f/myzeyogr"
+          method="POST"
+        >
+          <input type="email" name="email" class="email-input" required />
+          <button type="submit" class="notify-button">Notify Me</button>
+        </form>
       </div>
     </div>
 
