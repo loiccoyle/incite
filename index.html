@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InCite - Next-Gen Reference Management</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a237e 0%, #3a148c 100%);
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      .particles {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .container {
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 4rem 0;
+        animation: fadeIn 1s ease-in;
+      }
+
+      .coming-soon {
+        background: #ffd600;
+        color: #1a237e;
+        padding: 0.5rem 1.5rem;
+        border-radius: 2rem;
+        display: inline-block;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin: 1rem 0;
+        letter-spacing: -2px;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .tagline {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 4rem 0;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 1rem;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #7c4dff;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin: 6rem 0;
+      }
+
+      .email-input {
+        padding: 1rem 2rem;
+        border-radius: 3rem;
+        border: none;
+        width: 350px;
+        margin: 2rem 0;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .notify-button {
+        background: #7c4dff;
+        color: white;
+        border: none;
+        padding: 1rem 3rem;
+        border-radius: 3rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        .features {
+          grid-template-columns: 1fr;
+        }
+        .email-input {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas class="particles" id="particles"></canvas>
+
+    <div class="container">
+      <header>
+        <div class="coming-soon">COMING SOON</div>
+        <h1>InCite</h1>
+        <h2>Next-Gen Reference Management</h2>
+        <br />
+        <div class="tagline">
+          Organize, Discover, Understand<br />
+          Transform your Bibliography into a Queryable Knowledge Base
+        </div>
+      </header>
+
+      <div class="features">
+        <div class="feature-card">
+          <i class="feature-icon fas fa-brain"></i>
+          <h3>RAG-Powered Insights</h3>
+          <p>
+            Query in natural language and get answers from your research papers
+          </p>
+        </div>
+        <div class="feature-card">
+          <i class="feature-icon fas fa-project-diagram"></i>
+          <h3>Smart Organization</h3>
+          <p>
+            Automatically categorize and connect related papers using AI
+            clustering
+          </p>
+        </div>
+        <div class="feature-card">
+          <i class="feature-icon fas fa-search"></i>
+          <h3>Super Search</h3>
+          <p>
+            Search semantically across your entire library with a single query
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h2>Be the first to revolutionize your research workflow</h2>
+        <input
+          type="email"
+          class="email-input"
+          placeholder="Enter your email for early access"
+        />
+        <button class="notify-button">Notify Me</button>
+      </div>
+    </div>
+
+    <script>
+      // Simple particle animation
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2;
+          this.speedX = Math.random() * 3 - 1.5;
+          this.speedY = Math.random() * 3 - 1.5;
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          if (this.x > canvas.width) this.x = 0;
+          if (this.x < 0) this.x = canvas.width;
+          if (this.y > canvas.height) this.y = 0;
+          if (this.y < 0) this.y = canvas.height;
+        }
+
+        draw() {
+          ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        for (let i = 0; i < 50; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((particle) => {
+          particle.update();
+          particle.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // Simple email submission animation
+      document.querySelector(".notify-button").addEventListener("click", () => {
+        document.querySelector(".email-input").style.transform = "scale(1.05)";
+        setTimeout(() => {
+          document.querySelector(".email-input").style.transform = "scale(1)";
+        }, 200);
+      });
+    </script>
+  </body>
+</html>
